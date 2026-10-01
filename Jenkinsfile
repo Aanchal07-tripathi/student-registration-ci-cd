@@ -6,19 +6,21 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Building Student Registration Project...'
+                echo 'Building Student Registration Web Application...'
 
                 bat '''
                     if not exist index.html exit /b 1
+                    if not exist style.css exit /b 1
+                    if not exist script.js exit /b 1
                 '''
 
-                echo 'HTML file found successfully.'
+                echo 'HTML, CSS and JavaScript files found.'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running HTML tests...'
+                echo 'Running tests...'
 
                 bat 'python test.py'
             }
